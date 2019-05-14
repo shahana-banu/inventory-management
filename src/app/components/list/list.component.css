@@ -1,0 +1,13 @@
+table {
+    width: 100%;
+    background-color: gainsboro;
+}
+
+.mat-column-right {
+    text-align: center;
+}
+
+.mat-card{
+background-color: rgba(220, 220, 220, 0.678);
+
+}
