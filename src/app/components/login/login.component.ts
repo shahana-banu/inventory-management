@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material' 
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,27 +11,35 @@ import {MatDialog} from '@angular/material'
 
 
 export class LoginComponent implements OnInit {
-  constructor(private router: Router) { }
-username: string;
-password: string;
-User: string;
 
+  createForm: FormGroup;
+
+
+  constructor(private fb: FormBuilder,private router: Router) {
+    this.createForm = this.fb.group({
+      uname: ['', Validators.required],
+      pwd: ['', Validators.required],
+      user: '',
+    });
+
+   }
 
   ngOnInit() {
   }
-  login() : void {
 
-    if(this.username == 'admin' && this.password == 'admin' && this.User == 'Worker') {
-        this.router.navigate(['/list'])
-        
-    } 
-    if(this.username == 'admin' && this.password == 'admin' && this.User == 'Stack Handler')  
-    {
+  login(uname,pwd,user){
+    
+    if(uname=='admin' && pwd=='admin' && user=='Worker'){
+      this.router.navigate(['/list'])
+    }
+
+    else if(uname=='admin' && pwd=='admin' && user=='Stack Handler'){
       this.router.navigate(['/slist'])
     }
-    
-    else {
-      alert (this.username);
+
+    else{
+      alert("Invalid");
     }
   }
+
   }
