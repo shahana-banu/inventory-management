@@ -1,5 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="center center" class="login-main">
-<mat-card>
+  
+<form [formGroup]="createForm" class="create-form">
+  <mat-card>
     <mat-card-actions align="center">
   
   <h3>Login Page</h3>
@@ -7,31 +9,25 @@
   <mat-card-content fxLayout="column">
   
     <mat-form-field>
-      <input type ="text" matInput placeholder="Username" ng-model = "Username">
-    
+      <input type ="text" matInput placeholder="Username" formControlName="uname" #uname>
     </mat-form-field>
   <br>
-
+  
+  <mat-form-field>
+    <input type="password" matInput placeholder="password" formControlName="pwd" #pwd >
+  </mat-form-field>
   <br>
   
-    <mat-form-field>
-      <input type="password" matInput placeholder="password" ng-model = "password">
-    </mat-form-field>
-    <br>
-  
-    <mat-form-field>
-      <input type= "text" matInput placeholder="User" ng-model = "User">
+  <mat-form-field>
+      <input type= "text" matInput placeholder="User" formControlName="user" #user>
   </mat-form-field>
 
   </mat-card-content>
-    
-      <button mat-raised-button color="primary" (click)="login()">Login</button>
-    
-      </mat-card-actions>
-  
+    <button type="submit" (click)="login(uname.value,pwd.value,user.value)"[disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Login</button>
+  </mat-card-actions>
   
   </mat-card>
-  
+</form>  
   
   </div>
   
